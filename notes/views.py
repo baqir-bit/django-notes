@@ -15,5 +15,19 @@ def list_notes(request) :
         })
 
     return JsonResponse(data, safe=False)
+
+def get_notes(request, note_id) :
+    try :
+        note = Note.objects.get(id=note_id)
+        data = {
+            "id" : note.id,
+            "title" : note.title,
+            "content" : note.content,
+            "priority" : note.priority,
+            "created_at" : note.created_at
+        }
+        return JsonResponse(data)
+    except Note.DoesNotExist :
+        return JsonResponse({"error" : "Note not found"}, status=404)
     
 
