@@ -1,0 +1,273 @@
+/* =========================================================
+   GLOBAL / RESET
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #222831;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.app-header {
+  background-color: #2f3e46;
+  color: #ffffff;
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+
+.app-main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+section {
+  margin-bottom: 2.5rem;
+}
+
+h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #2f3e46;
+}
+
+/* =========================================================
+   MESSAGE BANNER (success / error feedback)
+   ========================================================= */
+
+.message-banner {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.message-banner.success {
+  background-color: #e3f7e6;
+  color: #206b2c;
+  border: 1px solid #b6e4bd;
+}
+
+.message-banner.error {
+  background-color: #fdecea;
+  color: #a12622;
+  border: 1px solid #f5c2bf;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.form-section {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+#note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #52616b;
+  margin-top: 0.6rem;
+}
+
+input[type="text"],
+textarea,
+select {
+  padding: 0.6rem 0.7rem;
+  border: 1px solid #cbd3d8;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #fbfbfb;
+  resize: vertical;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #52796f;
+  box-shadow: 0 0 0 2px rgba(82, 121, 111, 0.2);
+}
+
+.form-buttons {
+  margin-top: 1.2rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.btn-primary {
+  background-color: #52796f;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #3f5f57;
+}
+
+.btn-secondary {
+  background-color: #e0e0e0;
+  color: #333333;
+}
+
+.btn-secondary:hover {
+  background-color: #cfcfcf;
+}
+
+/* =========================================================
+   NOTES LIST
+   ========================================================= */
+
+.notes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.note-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 1.2rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  border-left: 5px solid #cbd3d8; /* overridden per priority below */
+}
+
+.note-card.priority-low {
+  border-left-color: #52796f; /* green = low */
+}
+
+.note-card.priority-medium {
+  border-left-color: #e9a23b; /* amber = medium */
+}
+
+.note-card.priority-high {
+  border-left-color: #d64545; /* red = high */
+}
+
+.note-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: #222831;
+}
+
+.note-content {
+  color: #4a4a4a;
+  margin: 0 0 0.8rem 0;
+  white-space: pre-wrap; /* keep line breaks the user typed */
+  flex-grow: 1;
+}
+
+.note-meta {
+  font-size: 0.8rem;
+  color: #7a7a7a;
+  margin-bottom: 0.9rem;
+}
+
+.priority-badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-right: 0.4rem;
+}
+
+.priority-badge.priority-low {
+  background-color: #e3f0ec;
+  color: #2f6b5e;
+}
+
+.priority-badge.priority-medium {
+  background-color: #fbeed7;
+  color: #99680f;
+}
+
+.priority-badge.priority-high {
+  background-color: #fbe1e1;
+  color: #a12622;
+}
+
+.note-card-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.note-card-buttons .btn {
+  flex: 1;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.9rem;
+}
+
+.btn-edit {
+  background-color: #4a7a96;
+  color: #ffffff;
+}
+
+.btn-edit:hover {
+  background-color: #385f75;
+}
+
+.btn-delete {
+  background-color: #d64545;
+  color: #ffffff;
+}
+
+.btn-delete:hover {
+  background-color: #b93636;
+}
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.empty-state {
+  text-align: center;
+  color: #7a7a7a;
+  padding: 2rem;
+  font-size: 1rem;
+  grid-column: 1 / -1; /* span the full grid width */
+}

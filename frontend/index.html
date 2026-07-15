@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="app-header">
+    <h1>Notes Manager</h1>
+  </header>
+
+  <main class="app-main">
+
+    <!-- ===== MESSAGE BANNER (success / error feedback) ===== -->
+    <!-- This stays hidden until script.js gives it text and shows it -->
+    <div id="message-banner" class="message-banner hidden"></div>
+
+    <!-- ===== NOTE FORM ===== -->
+    <!-- Used for BOTH creating a new note and editing an existing one -->
+    <section class="form-section">
+      <h2 id="form-title">Create a New Note</h2>
+
+      <form id="note-form">
+        <!-- Hidden field to keep track of which note we're editing (empty = creating new) -->
+        <input type="hidden" id="note-id" value="" />
+
+        <label for="note-title">Title</label>
+        <input
+          type="text"
+          id="note-title"
+          name="title"
+          placeholder="Enter a title for your note"
+          required
+        />
+
+        <label for="note-content">Content</label>
+        <textarea
+          id="note-content"
+          name="content"
+          rows="4"
+          placeholder="Write your note here..."
+          required
+        ></textarea>
+
+        <label for="note-priority">Priority</label>
+        <select id="note-priority" name="priority">
+          <option value="0">Low</option>
+          <option value="1">Medium</option>
+          <option value="2">High</option>
+        </select>
+
+        <!-- Buttons for the form. The "Update" and "Cancel" buttons are -->
+        <!-- hidden by default and only appear while editing a note. -->
+        <div class="form-buttons">
+          <button type="submit" id="create-btn" class="btn btn-primary">
+            Create Note
+          </button>
+          <button type="submit" id="update-btn" class="btn btn-primary hidden">
+            Update Note
+          </button>
+          <button type="button" id="cancel-edit-btn" class="btn btn-secondary hidden">
+            Cancel Edit
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ===== NOTES LIST ===== -->
+    <section class="notes-section">
+      <h2>Your Notes</h2>
+
+      <!-- All note cards get inserted into this container by script.js -->
+      <div id="notes-container" class="notes-container">
+        <!-- Notes will be rendered here dynamically -->
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
