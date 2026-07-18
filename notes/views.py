@@ -1,7 +1,9 @@
 from django.http import JsonResponse
 from .models import Note
 import json
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 def list_notes(request) :
     notes = Note.objects.all()
 
@@ -30,7 +32,8 @@ def get_notes(request, note_id) :
         return JsonResponse(data)
     except Note.DoesNotExist :
         return JsonResponse({"error" : "Note not found"}, status=404)
-    
+
+@csrf_exempt    
 def create_note(request) :
     if request.method != "POST" :
         return JsonResponse({"error" : "Method not allowed"}, status=405)
@@ -68,6 +71,7 @@ def create_note(request) :
         "created_at" : note.created_at
     },status = 201)
 
+@csrf_exempt
 def update_note(request, note_id) :
     if request.method != "PUT" :
         return JsonResponse({"error" : "Method not allowed"}, status=405)
@@ -116,7 +120,7 @@ def update_note(request, note_id) :
     
 
     
-
+@csrf_exempt
 def delete_note(request, note_id) :
     if request.method != "DELETE" :
         return JsonResponse({"error" : "Method not allowed"}, status=405)

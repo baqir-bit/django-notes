@@ -39,12 +39,12 @@ const messageBanner = document.getElementById("message-banner");
 const PRIORITY_LABELS = {
   0: "Low",
   1: "Medium",
-  2: "High",
+  2: "High",    /* it is for displaying text */
 };
 
 const PRIORITY_CLASS_NAMES = {
   0: "priority-low",
-  1: "priority-medium",
+  1: "priority-medium",       /* for coloring above text */
   2: "priority-high",
 };
 
@@ -273,7 +273,7 @@ function resetForm() {
 // share the same form. We check whether note-id has a value
 // to decide which action to perform.
 noteForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+  event.preventDefault(); //prevents page reload
 
   const noteData = {
     title: noteTitleInput.value.trim(),
